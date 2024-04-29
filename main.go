@@ -19,7 +19,7 @@ func main(){
 
 	// CORSの設定
 	config := cors.DefaultConfig()
-	config.AllowOrigins = []string{"http://localhost:5173", "https://kametsun.vercel.app/"}
+	config.AllowAllOrigins = true
 	r.Use(cors.New(config))
 
 	r.GET("/health", func(ctx *gin.Context) {
