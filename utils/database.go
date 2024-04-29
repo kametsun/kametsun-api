@@ -12,9 +12,13 @@ import (
 
 // データベース接続をする
 func InitDataBase() *sql.DB{
-	err := godotenv.Load(".env")
-	if err != nil {
-		panic(fmt.Errorf("環境変数を読み込みできませんでした: %v", err))
+	MODE := os.Getenv("MODE")
+	if MODE == "" {
+		err := godotenv.Load(".env")
+		if err != nil {
+			panic(fmt.Errorf("環境変数を読み込みできませんでした: %v", err))
+		}
+		fmt.Println("環境変数を読み込みました。")
 	}
 
 	dbURL := os.Getenv("DB_URL")
